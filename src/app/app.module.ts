@@ -9,10 +9,16 @@ import {MatListModule} from '@angular/material/list';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import 'hammerjs';
 import { MenuComponent } from './menu/menu.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { DishdetailComponent } from './dishdetail/dishdetail.component';
+import {MatCardModule} from '@angular/material/card';
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent
+    MenuComponent,
+    DishdetailComponent
   ],
   imports: [
     BrowserModule,
@@ -21,6 +27,8 @@ import { MenuComponent } from './menu/menu.component';
     MatToolbarModule,
     FlexLayoutModule,
     MatListModule,
+    MatGridListModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
