@@ -1,3 +1,4 @@
+import{Comment} from './comment';
 export class Dish{
     id : string;
     name: string;
@@ -7,17 +8,18 @@ export class Dish{
     price : string;
     description : string;
     label : string;
+    comments: Comment[];
 
-    constructor( id:string,name : string,image:string,category:string,
-        featured : boolean,price : string,description: string,
-        label:string){
-        this.id =id;
-        this.name = name; 
-        this.image = image;
-        this.category=category;
-        this.featured = featured;
-        this.price =price;
-        this.description = description;
-        this.label = label;
+    constructor( ){
+        this.id ="";
+        this.name = ""; 
+        this.image="";
+        this.category="";
+        this.featured = true;
+        this.price ="";
+        this.description = "";
+        this.label = "";
+        this.comments=[];
     }
+   
 }
