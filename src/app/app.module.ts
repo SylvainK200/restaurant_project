@@ -21,6 +21,8 @@ import { ContactComponent } from './contact/contact.component';
 
 
 
+import {LeaderService} from './services/leader.service';
+import {PromotionService} from './services/promotion.service';
 import {DishService} from "./services/dish-service.service";
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import {DishService} from "./services/dish-service.service";
     MatButtonModule
   ],
   providers: [
-    DishService
+    DishService,
+    PromotionService,
+    LeaderService
   ],
   bootstrap: [AppComponent]
 })
