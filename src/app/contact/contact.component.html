@@ -35,4 +35,57 @@
       </div>
     </div>
   </div>
+
+  <div fxFlex fxFlexOffset= "20px" class = "form-size">
+    <h3> Send us your Feedback</h3>
+    <p>{{feedbackForm.value | json}} {{feedbackForm.status| json}}</p>
+
+    <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" #fform="ngForm">
+      <p>
+        <mat-form-field class = "half-width">
+          <input matInput formControlName="firstname" placeholder="first name" type = "text">
+           <mat-error *ngIf="!feedbackForm.controls['firstname'].valid && feedbackForm.controls['firstname']?.touched">First name is required</mat-error>
+        
+        </mat-form-field>
+        <mat-form-field class = "half-width">
+          <input matInput formControlName="lastname" placeholder = "Last Name" type = "text" style  = "margin: 10px;">
+          <mat-error *ngIf="!feedbackForm.controls['lastname'].valid && feedbackForm.controls['lastname']?.touched">First name is required</mat-error>
+        
+        </mat-form-field>
+
+      </p>
+      <p>
+        <mat-form-field class = "half-width">
+          <input matInput formControlName="telnum" placeholder="phone number" type = "tel">
+          <mat-error *ngIf="!feedbackForm.controls['telnum'].valid && feedbackForm.controls['telnum']?.touched">First name is required</mat-error>
+        
+        </mat-form-field>
+        <mat-form-field class = "half-width">
+          <input matInput formControlName="email" placeholder = "email" type = "email" style  = "margin: 10px;">
+          <mat-error *ngIf="!feedbackForm.controls['email'].valid && feedbackForm.controls['email']?.touched">First name is required</mat-error>
+        </mat-form-field>
+        
+      </p>
+      <table class = "form-size" >
+        <td>
+         <mat-slide-toggle formControlName = "contactType" >
+           May we contact you ? 
+         </mat-slide-toggle>
+        </td>
+        <td>
+          <mat-select placeholder="How? " formControlName= "contactType">
+            <mat-option *ngFor="let ctype of contactType" [value]= "ctype">
+              {{ctype}} 
+            </mat-option>
+          </mat-select>
+        </td>
+      </table>
+      <p>
+        <mat-form-field class = "full-width">
+          <textarea matInput formControlName = "message" placeholder="Your expectations"></textarea>
+        </mat-form-field>
+      </p>
+      <button type = "submit" mat-button class = "background-primary text-floral-white">Submit</button>
+    </form>
+  </div>
 </div>
