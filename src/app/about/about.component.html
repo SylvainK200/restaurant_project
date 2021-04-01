@@ -72,10 +72,14 @@
                 <span> {{leader.description}} </span>
                 </p>
             </div>
-                    </div>
+        </div>
         
       </mat-list-item>
         
         
+</div>
+<div [hidden] = "leaders">
+  <mat-spinner></mat-spinner>
+  <h3 > Loading ... please wait</h3>
 </div>
 </div>
