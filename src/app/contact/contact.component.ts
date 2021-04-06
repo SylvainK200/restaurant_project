@@ -78,7 +78,6 @@ export class ContactComponent implements OnInit {
     if (!this.feedbackForm) { return; }
     const form = this.feedbackForm;
     for (const field in this.formErrors) {
-      console.log(field);
       if (field in this.formErrors) {
          //clear previous error message (if any)
         this.formErrors[field] = '';
