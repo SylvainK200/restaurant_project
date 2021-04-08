@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild,Inject } from '@angular/core';
 import {Dish} from "../shared/dish";
 import { DishService } from '../services/dish-service.service';
 import { Params, ActivatedRoute } from '@angular/router';
@@ -6,6 +6,8 @@ import { Location } from '@angular/common';
 import {switchMap}from 'rxjs/operators';
 import {FormBuilder,FormGroup,NgForm,Validators} from '@angular/forms';
 import {Comment} from '../shared/comment';
+import { baseUrl } from '../shared/baseUrl';
+
 @Component({
   selector: 'app-dishdetail',
   templateUrl: './dishdetail.component.html',
@@ -19,6 +21,7 @@ export class DishdetailComponent implements OnInit {
   prev : string="";
   next :string = "";
   commentForm: FormGroup;
+  baseurl : string = baseUrl;
   comment:Comment=new Comment();
 
   formErrors : any ={
@@ -42,7 +45,8 @@ export class DishdetailComponent implements OnInit {
   constructor(private dishservice: DishService,
     private route: ActivatedRoute,
     private location: Location,
-    private fb: FormBuilder) { 
+    private fb: FormBuilder,
+    @Inject('BaseURL') private baseURL : typeof baseUrl) { 
     this.dishservice.getDish("k").subscribe(dish=>this.dish=dish)
 
     this.commentForm=this.fb.group({
