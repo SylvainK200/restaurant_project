@@ -41,13 +41,15 @@ export class DishdetailComponent implements OnInit {
       
     }
   }
+  errMess ?: string;
 
   constructor(private dishservice: DishService,
     private route: ActivatedRoute,
     private location: Location,
     private fb: FormBuilder,
     @Inject('BaseURL') private baseURL : typeof baseUrl) { 
-    this.dishservice.getDish("k").subscribe(dish=>this.dish=dish)
+    this.dishservice.getDish("k").subscribe(dish=>this.dish=dish,
+      errMess => this.errMess=<any>errMess);
 
     this.commentForm=this.fb.group({
       author:['',[Validators.required,Validators.minLength(2),Validators.maxLength(25)]],

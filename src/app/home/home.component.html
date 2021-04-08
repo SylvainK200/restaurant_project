@@ -19,11 +19,14 @@ fxLayoutGap="10px">
 </p>
 </mat-card-content>
 </mat-card>
-<div [hidden]="dish">
+<div [hidden]="dish || errMess1">
     <mat-spinner></mat-spinner>
     <h3> Loading ... please wait</h3>
 </div>
-
+<div fxFlex *ngIf="errMess1">
+     <h2>Error</h2>
+    <h4>{{errMess}}</h4>
+</div>
 <mat-card *ngIf="promotion" fxFlex>
 <mat-card-header>
 <div mat-card-avatar></div>
@@ -37,10 +40,14 @@ fxLayoutGap="10px">
 </p>
 </mat-card-content>
 </mat-card>
-<div [hidden]="promotion">
+<div [hidden]="promotion || errMess2">
     <mat-spinner></mat-spinner>
     <h3> Loading ... please wait</h3>
 </div>
+<div fxFlex *ngIf="errMess2">
+     <h2>Error</h2>
+    <h4>{{errMess}}</h4>
+  </div>
 <mat-card *ngIf="leader" fxFlex>
     <mat-card-header>
     <div mat-card-avatar></div>
@@ -55,8 +62,12 @@ fxLayoutGap="10px">
     </p>
     </mat-card-content>
     </mat-card>
-<div [hidden]="leader">
+<div [hidden]="leader||errMess">
     <mat-spinner></mat-spinner>
     <h3> Loading ... please wait</h3>
 </div>
+<div fxFlex *ngIf="errMess">
+     <h2>Error</h2>
+    <h4>{{errMess}}</h4>
+  </div>
 </div>
