@@ -35,6 +35,7 @@ import {DishService} from "./services/dish-service.service";
 import { LoginComponent } from './login/login.component';
 import {baseUrl} from './shared/baseUrl';
 import {ProcessHttpMsgService} from './services/process-http-msg.service';
+import { HighlightDirective } from './directives/highlight.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,8 @@ import {ProcessHttpMsgService} from './services/process-http-msg.service';
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    LoginComponent
+    LoginComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,

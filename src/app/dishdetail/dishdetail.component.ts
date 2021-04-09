@@ -90,8 +90,11 @@ export class DishdetailComponent implements OnInit {
   ngOnInit() {
     this.dishservice.getDishId().subscribe(dishIds=>this.dishIds=dishIds);
 
-    this.route.params.pipe  (switchMap((params:Params)=>this.dishservice.getDish(params['id'])))
-    .subscribe(dish=>{this.dish=dish;this.setPrevNext(dish.id)})
+    this.route.params
+    .pipe  (switchMap((params:Params)=>this.dishservice.getDish(params['id'])))
+    .subscribe(dish=>{this.dish=dish;this.setPrevNext(dish.id
+      );this.dishCopy=dish},
+    errmess => this.errMess = <any>errmess );
   }
 
   goBack(): void {
@@ -105,17 +108,24 @@ export class DishdetailComponent implements OnInit {
   formatLabel(value: number) {
     return value;
   }
-
+  dishCopy:Dish=new Dish();
   onSubmit(){
     this.comment = this.commentForm.value;
     this.comment.date=Date();
-    this.dish?.comments.push(this.comment);
     this.commentForm?.reset({
       author : "",
       rating:5,
       comment:'',
     });
   
-    
+    this.dishCopy?.comments.push(this.comment);
+    this.dishservice.putDish(this.dishCopy)
+    .subscribe(dish =>{
+      this.dish=dish;
+      this.dishCopy=dish;
+    },err=>
+    {
+      this.dish=new Dish();this.dishCopy=new Dish();this.errMess=<any>err;
+    })
   }
 }
