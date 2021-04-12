@@ -1,12 +1,20 @@
 import { Component, OnInit ,Inject} from '@angular/core';
 import {Dish} from '../shared/dish';
 import {DishService} from '../services/dish-service.service';
-import { BasePortalOutlet } from '@angular/cdk/portal';
+import {expand, flyInOut} from '../animations/app.animation';
 import {baseUrl} from '../shared/baseUrl';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  styleUrls: ['./menu.component.scss'],
+  host: {
+    '[@flyInOut]':'true',
+    'style':'display:block'
+  },
+  animations:[
+    flyInOut(),
+    expand()
+  ]
 })
 export class MenuComponent implements OnInit {
   baseurl : string = baseUrl;
